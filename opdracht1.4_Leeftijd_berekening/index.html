@@ -9,10 +9,19 @@
     
 </body>
 <script>
+  function berekenLeeftijdInJaren(geboorteJaar, geboorteMaand, geboorteDag) {
   let now = new Date();
-  let birth = new Date(2006, 2, 9); 
-  let miliseconds = now-birth;
-  let days = miliseconds / 86400000;
-  console.log(days)
+  let birth = new Date(geboorteJaar, geboorteMaand - 1, geboorteDag); 
+  let miliseconds = now - birth;
+  let leeftijdInJaren = miliseconds / (1000 * 60 * 60 * 24 * 365.25); 
+  return leeftijdInJaren.toFixed(2); 
+}
+
+let geboorteJaar = prompt("Welk jaar ben je geboren?");
+let geboorteMaand = prompt("Welke maand ben je geboren?");
+let geboorteDag = prompt("Welke dag ben je geboren?");
+
+let leeftijd = berekenLeeftijdInJaren(geboorteJaar, geboorteMaand, geboorteDag);
+console.log(`Je bent ${leeftijd} jaar oud.`);
 </script>
 </html>
